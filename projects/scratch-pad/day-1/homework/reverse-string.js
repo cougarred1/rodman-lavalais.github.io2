@@ -22,13 +22,13 @@
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
     
-    let newString = "";
+    let newString = ""; // new variable created to collect the output to return
       
-    for (let x = input.length - 1; x >= 0; x --) {
-        newString += input[x];
+    for (let x = input.length - 1; x >= 0; x --) { //for loop created to iterate through the string in reverse
+        newString += input[x]; //individual characters accessed in the string
     }
     
-    return newString;
+    return newString; //the reverse string is returned
     
     // YOUR CODE GOES ABOVE HERE //
 }

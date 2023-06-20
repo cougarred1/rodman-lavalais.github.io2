@@ -14,7 +14,6 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
 
 return string.length //.length informs the exact number of cgaracters
     // YOUR CODE ABOVE HERE //
@@ -26,8 +25,9 @@ return string.length //.length informs the exact number of cgaracters
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
 
-return newString = string.toLowerCase(); //created and returned the string lowercase
+let newString = string.toLowerCase(); //created and returned the string lowercase
 
+return newString;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -37,9 +37,9 @@ return newString = string.toLowerCase(); //created and returned the string lower
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
 
-return newString = string.toUpperCase(); //new string where input has been uppercased
+let newString = string.toUpperCase(); //new string where input has been uppercased
 
-    // YOUR CODE ABOVE HERE //
+  return newString;  // YOUR CODE ABOVE HERE //
 }
 
 /**
@@ -77,7 +77,7 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-if (string[0] == char) { //comparing the first index of the string, to the character
+if (string[0].toLowerCase() == char.toLowerCase()) { //comparing the first index of the string, to the character
     return true //true is returned if it's the same
 } else {
     return false //otherwise false
@@ -167,7 +167,7 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-return stringOne.localeCompare(stringTwo); //used .localeCompare to compare both strings in alphabetical order
+return -stringOne.localeCompare(stringTwo); //used .localeCompare to compare both strings in alphabetical order
 
     // YOUR CODE ABOVE HERE //
 }
@@ -183,7 +183,7 @@ return stringOne.localeCompare(stringTwo); //used .localeCompare to compare both
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-    return -stringOne.localeCompare(stringTwo); //use the same function as before, but invert everything with minus symbol
+    return stringOne.localeCompare(stringTwo); //use the same function as before, but invert everything with minus symbol
     //turning -1 to 1 and 1 to -1. -0 would sitll come out as 0 which is perfectly fine 
 
 
