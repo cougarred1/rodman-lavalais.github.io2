@@ -57,7 +57,7 @@ return newString = string.toUpperCase(); //new string where input has been upper
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-    return string.toLowerCase().split(" ").join("-");
+    return string.toLowerCase().split(" ").join("-"); //return the string lowercase, split to an array, then rejoined with "-"
 
 
     // YOUR CODE ABOVE HERE //
@@ -77,10 +77,10 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-if (string[0] == char) {
-    return true
+if (string[0] == char) { //comparing the first index of the string, to the character
+    return true //true is returned if it's the same
 } else {
-    return false
+    return false //otherwise false
 }
        // YOUR CODE ABOVE HERE //
 }
@@ -100,7 +100,7 @@ if (string[0] == char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-return string[string.length - 1].toLowerCase() == char.toLowerCase();
+return string[string.length - 1].toLowerCase() == char.toLowerCase(); //returned the last index of the string , and compared it to the string character , while making them both lowerCase
 
 // YOUR CODE ABOVE HERE //
 }
@@ -112,7 +112,7 @@ return string[string.length - 1].toLowerCase() == char.toLowerCase();
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-return stringOne += stringTwo;
+return stringOne += stringTwo; //concatented stringTwo, to stringOne
 
 
     // YOUR CODE ABOVE HERE //
@@ -131,7 +131,7 @@ return stringOne += stringTwo;
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-return args.join("");
+return args.join(""); //return all arguments, joined together, no matter how many.
 
     // YOUR CODE ABOVE HERE //
 }
@@ -147,10 +147,10 @@ return args.join("");
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    if (stringOne.length > stringTwo.length) {
+    if (stringOne.length > stringTwo.length) { //if the length of stringOne is better than stringTwo, return stringOne
         return stringOne;
       } else {
-        return stringTwo;
+        return stringTwo; //otherwise return stringTwo
       }
 
 
@@ -167,7 +167,7 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+return stringOne.localeCompare(stringTwo); //used .localeCompare to compare both strings in alphabetical order
 
     // YOUR CODE ABOVE HERE //
 }
@@ -183,7 +183,8 @@ function sortAscending(stringOne, stringTwo) {
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    return -stringOne.localeCompare(stringTwo); //use the same function as before, but invert everything with minus symbol
+    //turning -1 to 1 and 1 to -1. -0 would sitll come out as 0 which is perfectly fine 
 
 
     // YOUR CODE ABOVE HERE //
