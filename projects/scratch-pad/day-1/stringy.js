@@ -57,7 +57,7 @@ return newString = string.toUpperCase(); //new string where input has been upper
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
+    return string.toLowerCase().split(" ").join("-");
 
 
     // YOUR CODE ABOVE HERE //
