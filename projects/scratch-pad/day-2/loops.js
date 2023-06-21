@@ -53,8 +53,8 @@ return Object.keys(object);
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
-  for (let x = 0; x < object.length; x++) {
-    console.log(Object.keys(object));
+  for (const key in object) {
+    console.log(key);
   }
   
   
