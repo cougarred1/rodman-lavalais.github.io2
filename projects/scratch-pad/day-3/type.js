@@ -95,12 +95,25 @@ function isCollection(value) {
  *    typeOf("javascript") -> "string"
  *    typeOf([1,2,3]) -> "array"
  */ 
-function typeOf(value) {
-    // YOUR CODE BELOW HERE //
-    
-    
-    // YOUR CODE ABOVE HERE //
-}
+    function typeOf(value) {
+        const string = typeof value;    
+        // YOUR CODE BELOW HERE //
+            
+        if (Array.isArray(value)) {
+            return "array";
+        } 
+        if (value === null) {
+            return "null";
+        }
+        if (value instanceof Date) {
+            return "date";
+        }
+
+
+                return string;
+            
+        // YOUR CODE ABOVE HERE //
+    }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
