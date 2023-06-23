@@ -5,7 +5,7 @@
 /**
  * 3: range()
  *
- *  a. Create a function called range that takes two integers as 
+ *  a. Create a functionu called range that takes two integers as 
  *  parameters and returns an Array containing all integers 
  *  between the two parameters, inclusively.  For example:
  *
@@ -23,10 +23,20 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+   
+    let output = [];
+  if (start < end) {
+    //  loop start to end
+     for (let x = start; x <= end; x++) {
+      output.push(x);
+     }
+    } else { 
+      //loop goes from end to start
+      for (let x = start; x >= end; x--) {
+        output.push(x);
+      }
+    }
+    return output;
     // YOUR CODE GOES ABOVE HERE //
 }
 
