@@ -118,15 +118,18 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    let listNames = [];
+    
     for (let x = 0; x < strings.length; x++) {
-        if (strings[0] === "C" && strings[strings.length - 1] === "!") {
-            return true
-        }
+       if (!test(strings[x])) {
+        return false;
+       } else {
+       
+       }
+         
 
     }
     
-    
+     return true;
     // YOUR CODE ABOVE HERE //
 }
 
