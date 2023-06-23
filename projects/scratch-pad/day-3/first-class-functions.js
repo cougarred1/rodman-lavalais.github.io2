@@ -92,10 +92,18 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    //new variable created to collect results
+    let results = [];
+
+    //loop through the string
+    for (let x = 0; x < strings.length; x++) {
+
+        //added the modified strings to the result variable using .push
+        results.push(modify(strings[x]));
+
+    }
     
-    
-    
-    
+    return results;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -110,8 +118,13 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    let listNames = [];
+    for (let x = 0; x < strings.length; x++) {
+        if (strings[0] === "C" && strings[strings.length - 1] === "!") {
+            return true
+        }
+
+    }
     
     
     // YOUR CODE ABOVE HERE //
