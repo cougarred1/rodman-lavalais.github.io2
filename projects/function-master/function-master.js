@@ -71,10 +71,9 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-   for (let key in object) {
-      return "Welcome" + " " + object.name + "!";
-      }
-        
+   let sentence = object.name.charAt(0).toUpperCase() + object.name.slice(1);
+   
+      return "Welcome" + " " + sentence + "!";  
 }
 
 //////////////////////////////////////////////////////////////////////
