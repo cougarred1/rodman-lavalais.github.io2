@@ -94,8 +94,6 @@ function profileInfo(object) {
 function maybeNoises(object) {
  if (Array.isArray(object.noises)) {
   return object.noises.join(" ");
-} else if (Object.keys(object).length > 0) {
-  return "there are no noises";
 } else {
   return "there are no noises";
 }
