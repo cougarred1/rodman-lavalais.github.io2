@@ -50,6 +50,7 @@ noises[noises.length] = "cry";
 //console log the length of noises
 console.log(noises.length);
 
+
 //console log the entire array
 
 console.log(noises);
@@ -59,11 +60,13 @@ console.log(noises);
 //////////////////////////////////////////////////////////////////////
 
 //use bracket notation to assign our noises key on animal to our noises array
-noises = animal["noises"];
+animal["noises"] = noises;
 
 //add another noise to the 'noises' property on animal
 
-  animal["noises"]["Meow"];
+  animal.noises.push("hello");
+
+  console.log(animal);
 
 
 
@@ -71,9 +74,11 @@ noises = animal["noises"];
  * Step 4 - Review
  *
  * 1. What are the different ways you can access properties on objects?
+ * 
+ * You can use bracket notation or dot notation
  *
  * 2. What are the different ways of accessing elements on arrays?
- *
+ *  Use bracket notation to reach each index
  * *******************************************************************
  */
 
@@ -89,6 +94,50 @@ noises = animal["noises"];
 //////////////////////////////////////////////////////////////////////
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var animals = [];
+
+
+//push animal we created into animals
+animals.push(animal);
+
+//console log animals
+console.log(animals);
+
+//create variable duck and assign it to given data
+var duck = {
+  species: 'duck',
+  name: 'Jerome',
+  noises: ['quack', 'honk', 'sneeze', 'woosh']
+};
+
+//push duck to animals
+animals.push(duck);
+
+//console log animals
+console.log(animals);
+
+var lion = {
+  species: 'cat',
+  name: 'beast',
+  noises: ['beast roar', 'battle cry']
+};
+
+var chicken = {
+  species: 'cockle doodle doo',
+  name: 'rooster',
+  noises: ['hi', 'bye'] 
+};
+
+//console log animals
+console.log(animals);
+
+//console log the length
+console.log(animals.length);
+
+animals.push(lion);
+
+animals.push(chicken);
+
 
 
 
@@ -96,7 +145,28 @@ noises = animal["noises"];
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+//chose this data structure, because for the info a array works good
+var friends = [];
 
+// 5. Write a function called `getRandom` that takes our `animals` array and returns a random `index` of the input array, using `Math.random`.
+function getRandom(animals) {
+  var randomIndex = Math.floor(Math.random() * animals.length);
+  return randomIndex;
+}
+
+// 6. Using a random index from this function that you just created, get a random animal and add its `name` to `friends`.
+var randomIndex = getRandom(animals);
+var randomAnimal = animals[randomIndex];
+friends.push(randomAnimal.name);
+
+// 7. `console.log` `friends`.
+console.log(friends);
+
+// 8. Using bracket notation, add the `friends` list as a property also named `friends` on one of the animals in the `animals` array.
+randomAnimal['friends'] = friends.slice();
+
+// 9. console.log your work.
+console.log(randomAnimal);
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
