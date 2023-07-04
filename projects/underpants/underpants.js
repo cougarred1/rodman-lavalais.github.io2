@@ -120,6 +120,22 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number) {
+    if (!Array.isArray(array)) {
+        return [];
+    } else if (!number){
+        return array[array.length - 1];
+    } else if (number > array.length) {
+        return array;
+    } else {
+        let items = [];
+        
+        for (let x = 1; x <= number; x++) {
+            items.push(array[x]);
+        }
+      return items;  
+    }
+}
 
 
 /** _.indexOf
@@ -170,16 +186,19 @@ _.first = function(array, number) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-/*_.each = function(collection, func) {
+_.each = function(collection, func){
     //if collection is array
-    if () {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        func(collection[i], i, collection);
+      }
+    } else {
+      for (var key in collection) {
+        func(collection[key], key, collection)
+      }
 
-        //iterate using for loop
-        func(array[x], /current index/ , /array itself/);
-
-    } else {//else collection is an object
     }
-}*/
+}
 
 /** _.unique
 * Arguments:
