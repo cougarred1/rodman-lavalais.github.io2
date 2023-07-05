@@ -154,6 +154,17 @@ _.last = function(array, number) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value) {
+
+for (let x = 0; x < array.length; x++) {
+    if (value === array[x]) {
+    return x;
+    }
+ 
+
+    }
+   return -1; 
+}
 
 /** _.contains
 * Arguments:
@@ -169,7 +180,16 @@ _.last = function(array, number) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+ _.contains = function(array, value) {
+    let storage = [];
 
+   for (let x = 0; x < array.length; x++) {
+    if (array[x] === value) {
+        storage.push(array[x]);
+    } 
+   }
+   return (storage[0] === value? true : false);
+ }
 
 /** _.each
 * Arguments:
