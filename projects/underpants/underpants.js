@@ -229,7 +229,18 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+_.unique = function(array) {
+    let dupe = [];
 
+    for (let x = 0; x < array.length; x++) {
+        if (_.indexOf(dupe, array[x]) === -1) {
+            dupe.push(array[x]);
+
+        }
+        
+    }
+    return dupe;
+}
 
 /** _.filter
 * Arguments:
@@ -246,7 +257,12 @@ _.each = function(collection, func){
 * Extra Credit:
 *   use _.each in your implementation
 */
+/*
+_.filter = function(array, function(element)) {
 
+}
+
+*/
 
 /** _.reject
 * Arguments:
