@@ -399,14 +399,11 @@ return newArray;
 
 _.pluck = function(array, prop) {
 
-let results = Object.key(value);
+return _.map(array, function(element) {
+    return element[prop];
+});
 
-
-
-    //return array containing value of property
-
-
-}
+};
 
 
 /** _.every

@@ -31,4 +31,4 @@ function identity(value) {
     return value;
 }
 
-module.exports.identitiy = identity;
+module.exports.identity = identity;
