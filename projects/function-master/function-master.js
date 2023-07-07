@@ -23,12 +23,19 @@ string.push(key);
 //////////////////////////////////////////////////////////////////////
 
    function valuesToString(object) {
-      let string = [];
-      for (let key in object) {
-         if (typeof object[key] === "string")
-      string.push(object[key]);
-      }
-         return string.join(" ");   
+
+      //create storage array to put values in
+let output = [];
+//iterate through the object
+for (let key in object) {
+
+   //use typeof to see if the value is a string
+   if (typeof object[key] === "string") {
+      //if so push that value to the output array
+      output.push(object[key]);
+   } 
+}  //return the array joined with space
+   return output.join(" ");
    }  
 
 //////////////////////////////////////////////////////////////////////
@@ -36,11 +43,12 @@ string.push(key);
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    if (Array.isArray(collection) == true) {
-      return 'array';
-    } else {
-      return 'object';
-    }
+ 
+   if (Array.isArray(collection)) {
+      return "array";
+   } else {
+      return "object";
+   }
     
 }
 
@@ -57,13 +65,13 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-   string = string.split(" ");
-   for (let x = 0; x < string.length; x++) {
-      string[x] = string[x].charAt(0).toUpperCase() + string[x].slice(1);
-   
-  
-   }
-    return string.join(" ");
+let newString = string.split(" ");
+let output = [];
+for (let x = 0; x < newString.length; x++) {
+   var last = newString[x].charAt(0).toUpperCase() + newString[x].slice(1);
+   output.push(last);
+}
+return output.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -73,7 +81,7 @@ function capitalizeAllWords(string) {
 function welcomeMessage(object) {
    let sentence = object.name.charAt(0).toUpperCase() + object.name.slice(1);
    
-      return "Welcome" + " " + sentence + "!";  
+      return `Welcome ${sentence}!`;  
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -84,7 +92,7 @@ function profileInfo(object) {
    let first = object.name.toUpperCase().charAt(0) + object.name.slice(1);
 
    let species = object.species.toUpperCase().charAt(0) + object.species.slice(1);
-   return first + " is a " + species;
+   return `${first} is a ${species}`;
 }
 
 //////////////////////////////////////////////////////////////////////
