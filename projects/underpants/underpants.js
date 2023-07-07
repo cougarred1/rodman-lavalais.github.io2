@@ -483,6 +483,43 @@ forEach = iterates through a collection, passes each value to a callback, "accum
 reduce = calls a function on each value on an array (no return)
 */
 
+_.some = function (collection, func) {
+
+    if (typeof func !== 'function') {
+        // Case when function is not provided
+        for (var i = 0; i < collection.length; i++) {
+          if (collection[i]) {
+            return true;
+          }
+        }
+        return false;
+      }
+    
+      var checkTruthy = function(value) {
+        return !!value;
+      };
+    
+      if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+          var result = func(collection[i], i, collection);
+          if (checkTruthy(result)) {
+            return true;
+          }
+        }
+      } else if (typeof collection === 'object') {
+        for (var key in collection) {
+          if (collection.hasOwnProperty(key)) {
+            var result = func(collection[key], key, collection);
+            if (checkTruthy(result)) {
+              return true;
+            }
+          }
+        }
+      }
+    
+      return false;
+}
+
 
 /** _.reduce
 * Arguments:
