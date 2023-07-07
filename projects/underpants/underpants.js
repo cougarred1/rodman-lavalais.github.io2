@@ -257,12 +257,25 @@ _.unique = function(array) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-/*
-_.filter = function(array, function(element)) {
+
+_.filter = function(array, func){
+let newArray = [];
+//for loop created to iterate each element in passing arguments
+for (let x = 0; x < array.length; x++) {
+    //calling function for each element(array[x], the index (x), and the array)
+    if (func(array[x], x, array)) {
+        //if calling the function returned true, push new array of elements
+         newArray.push(array[x])
+    }
+
+
+ }
+//return array;
+ return newArray;
 
 }
 
-*/
+
 
 /** _.reject
 * Arguments:
@@ -276,6 +289,23 @@ _.filter = function(array, function(element)) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, func) {
+let newArray = [];
+
+//iterate through each element
+for (let x = 0; x < array.length; x++) {
+//call function for 
+    if (!func(array[x], x, array)){
+
+        newArray.push(array[x]);
+        //
+
+    }
+
+    }
+    return newArray;
+}
 
 
 /** _.partition
@@ -297,6 +327,27 @@ _.filter = function(array, function(element)) {
 }
 */
 
+_.partition = function(array, func) {
+//2 sub arrays
+let truthy = [];
+
+let falsy = [];
+//iterate through each element in array
+for (let x = 0; x < array.length; x++) {
+    //if there are elements in this function
+    if (func(array[x], x, array)) {
+        //return truthy;
+        truthy.push(array[x]);
+        //otherwise return falsy
+     } else {
+        falsy.push(array[x]);
+     }
+
+    }
+    //return both sub arrays
+    return [truthy, falsy];
+}
+
 
 /** _.map
 * Arguments:
@@ -314,6 +365,26 @@ _.filter = function(array, function(element)) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func){
+let newArray = [];
+//check to see if collection is an array
+ if (Array.isArray(collection)) {
+    //if so iterate through each element
+    for (let x = 0; x < collection.length; x++) {
+//Push the elements of the function into the newArray
+    newArray.push(func(collection[x], x, collection));
+
+  } 
+    
+    } else {
+        for (let key in collection) {
+            if (collection.hasOwnProperty(key)) {
+                newArray.push(func(collection[key], key, collection));
+            }
+        }
+    }
+return newArray;
+}
 
 /** _.pluck
 * Arguments:
@@ -325,6 +396,17 @@ _.filter = function(array, function(element)) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(array, prop) {
+
+let results = Object.key(value);
+
+
+
+    //return array containing value of property
+
+
+}
 
 
 /** _.every
@@ -398,6 +480,12 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+/*map = calls a function on each value and pushes return to output array
+filter = tests each value with a function and pushes the values that return true to output array
+forEach = iterates through a collection, passes each value to a callback, "accumulates" a single value
+reduce = calls a function on each value on an array (no return)
+*/
+
 
 /** _.reduce
 * Arguments:
@@ -417,6 +505,25 @@ _.every = function(collection, func) {
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+ 
+_.reduce = function(array, func, seed){
+let result;
+//determine if reduce did NOT receive a seed value
+if (seed === undefined) {
+    result = array[0];
+    for (let x = 1; x < array.length; x++) {
+        result = func(result, array[x], x, array)
+    }
+} else {
+    result = seed;
+    for (let x = 0; x < array.length; x++) {
+        result = func(result, array[x], x, array);
+        //reassign result to result of invoking callback function
+
+    }
+}
+return result;
+}
 
 
 /** _.extend
@@ -433,6 +540,13 @@ _.every = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(obj1, obj2, obj3) {
+
+return Object.assign(obj1, obj2, obj3);
+
+
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
