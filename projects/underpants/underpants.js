@@ -428,30 +428,39 @@ return _.map(array, function(element) {
 */
 
 _.every = function(collection, func) {
-    let passes = [];
-    // determing if collection is array
-    if (Array.isArray(collection)) {
-        if (func === undefined) {
-            for (let x = 0; x < collection.length; x++) {
-                if (!collection[x]) {
-                    return false;
-                }
+    if (typeof func !== 'function') {
+        // Case when function is not provided
+        for (var i = 0; i < collection.length; i++) {
+          if (!collection[i]) {
+            return false;
+          }
+        }
+        return true;
+      }
+    
+      var checkFalsy = function(value) {
+        return !value;
+      };
+    
+      if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+          var result = func(collection[i], i, collection);
+          if (checkFalsy(result)) {
+            return false;
+          }
+        }
+      } else if (typeof collection === 'object') {
+        for (var key in collection) {
+          if (collection.hasOwnProperty(key)) {
+            var result = func(collection[key], key, collection);
+            if (checkFalsy(result)) {
+              return false;
             }
-
-        } else { 
-           for (let x = 0; x < collection.length; x++) {
-                if (!func(collection[x], x, collection)) {
-                    return false;
-                }
-           } //else it is an object
+          }
         }
-     } else {
-        if (func === defined){
-             
-        } else {
-
-        }
-      } //else it was
+      }
+    
+      return true;
     
 };
 
