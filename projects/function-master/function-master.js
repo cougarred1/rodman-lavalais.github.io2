@@ -89,10 +89,10 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-   let first = object.name.toUpperCase().charAt(0) + object.name.slice(1);
+ let name = object.name.charAt(0).toUpperCase() + object.name.slice(1);
+ let species = object.species.charAt(0).toUpperCase() + object.species.slice(1);
 
-   let species = object.species.toUpperCase().charAt(0) + object.species.slice(1);
-   return `${first} is a ${species}`;
+ return `${name} is a ${species}`
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -122,10 +122,12 @@ return false;
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a name and an object and add the name to the object's friends array then return the object
 function addFriend (name, object) {
+//add the name to the objects .friends array
+//then return the object
 
- object.friends.push(name);
+object.friends.push(name);
 
 return object;
 
@@ -135,14 +137,17 @@ return object;
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+//Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
 function isFriend(name, object) {
-   if (object.friends === undefined) return false
-   for (var i = 0; i < object.friends.length; i++) {
-       if (object.friends[i] === name) {
-         return true;
-       }
-     }
-     return false;
+//check to see if the name is in the friends array of object
+if (object.friends === undefined) return false;
+for (let x = 0; x < object.friends.length; x++) {
+if (object.friends[x] === name) {
+   return true;
+      }
+
+   }
+return false;
 }
 
 //////////////////////////////////////////////////////////////////////
