@@ -28,13 +28,14 @@ var _ = require('underbar');
 
 //find the number of male customers in the array
         var maleCount = function(array) {
-        let males = [];
-        array.filter(sex) => {
-        if (sex === "male") {
-        males.push(sex);
-            };
+            //declare variable males and set it to new Array using .filter
+            const males = array.filter(
 
-        return males.length;
+                //sex => replaces return so it returns sex that equals 'male'
+                sex => sex.gender === "male"
+              );
+              //return the numerical value of amount of males
+              return males.length;
     };
 
 
@@ -48,22 +49,34 @@ var _ = require('underbar');
  - **Constraints**: use `reduce` 
  */
 
+ //find the number of female customers
 var femaleCount = function(array) {
-    let females = _.reduce(array, function() {
+    let females = _.reduce(array, function(accumulator, current) {
 
+        if (current.gender === 'female') {
+            accumulator += 1;
+        }
+ return accumulator;
     }, 0);
+   return females;
 }
 
 var oldestCustomer = function(array) {
-    let oldest = _.reduce(array, function(acumulator, current)){
+ let oldest = _.reduce(array, function(accumulator, current){ 
 
-    };
+    if (current.age > accumulator.age) {
+        accumulator = current;
+    }
+return accumulator;
+ });
+
+return oldest.name;
 //determine if current customer is older than accumulator
     //if true, return current
 //else 
     //return accumulator
 };
-/*
+
 //invoke _.reduce(array)
 //if seed is undefined // TRUE
 //result = { name:  'Adele Mullin'... }
@@ -73,7 +86,28 @@ var oldestCustomer = function(array) {
 
 
 
-var youngestCustomer;
+/**
+ * 
+### 4: `youngestCustomer`
+ - **Objective**: Find the youngest customer's name
+ - **Input**: `Array`
+ - **Output**: `String`
+ - **Constraints**:
+
+ */
+var youngestCustomer = function (array) {
+    let youngest = array.reduce(function (youngestCust, currentCust) {
+      if (currentCust.age < youngestCust.age) {
+        return currentCust;
+      } 
+      return youngestCust;
+    });
+return youngest.name;
+  };
+
+
+
+
 
 var averageBalance; //skip this one
 
