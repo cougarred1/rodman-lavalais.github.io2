@@ -111,9 +111,32 @@ return youngest.name;
 
 var averageBalance; //skip this one
 
-var firstLetterCount;
 
-var friendFirstLetterCount;
+/* 6: `firstLetterCount`
+ - **Objective**: Find how many customer's names begin with a given letter
+ - **Input**: `Array`, `Letter`
+ - **Output**: `Number`
+ - **Constraints**: use .filter
+ */
+var firstLetterCount = function(array, letter) {
+    let count = array.filter(function(customer) {
+        return customer.name.charAt(0).toLowerCase() === letter.toLowerCase();
+    }).length;
+    return count;
+};
+
+var friendFirstLetterCount = function(array, name, letter) {
+    let customer = array.find(function(customer) {
+        return customer.name === name;
+    });
+    if (customer) {
+        let count = customer.friends.filter(function(friend) {
+            return friend.name.charAt(0).toLowerCase() === letter.toLowerCase();
+        }).length;
+        return count;
+    }
+    return 0;
+};
 
 var friendsCount;
 
