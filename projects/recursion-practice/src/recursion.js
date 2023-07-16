@@ -171,11 +171,22 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  if (y === 0) {
+    
+    return 0;
+  } else if (y > 0) {
+    return x + multiply(x, y - 1);
+  } else {
+    return -multiply(x, -y);
+  }
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+
+
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
@@ -192,32 +203,83 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (str1 === "" && str2 === "") {
+    // Base case: both strings are empty, they are identical.
+    return true;
+  } else if (str1.charAt(0) !== str2.charAt(0)) {
+    // Base case: the first characters of the strings are different, they are not identical.
+    return false;
+  } else {
+    // Recursive case: compare the substrings excluding the first character.
+    return compareStr(str1.substring(1), str2.substring(1));
+  }
+
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
+  if (str === "") {
+    return [];
+  } else {
+   
+    return [str.charAt(0)].concat(createArray(str.substring(1)));
+  }
+
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
+  if (array.length === 0) {
+    return [];
+  } else {
+   
+    return [array[array.length - 1]].concat(reverseArr(array.slice(0, -1)));
+  }
+
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  if (length === 0) {
+    return [];
+  } else {
+    return [value].concat(buildList(value, length - 1));
+  }
+
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  if (array.length === 0) {
+    // Base case: when the array is empty, the occurrence count is 0.
+    return 0;
+  } else {
+
+    if (array[0] === value) {
+      return 1 + countOccurrence(array.slice(1), value);
+    } else {
+      return countOccurrence(array.slice(1), value);
+    }
+  }
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  if (array.length === 0) {
+    // Base case: when the array is empty, return an empty array.
+    return [];
+  } else {
+    // Recursive case: apply the callback function to the first element of the array
+    // and concatenate it with the result of rMap for the remaining elements.
+    return [callback(array[0])].concat(rMap(array.slice(1), callback));
+  }
+
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
