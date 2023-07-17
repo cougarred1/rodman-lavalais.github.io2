@@ -315,17 +315,51 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  if (n === 0) {
+    // Base case: when n is 0, return the first Fibonacci number, which is 0.
+    return 0;
+  } else if (n === 1) {
+    // Base case: when n is 1, return the second Fibonacci number, which is 1.
+    return 1;
+  } else {
+    // Recursive case: return the sum of the (n-1)th Fibonacci number
+    // and the (n-2)th Fibonacci number.
+    return nthFibo(n - 1) + nthFibo(n - 2);
+  }
+  
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
+  if (input.length === 0) {
+    // Base case: when the input array is empty, return an empty array.
+    return [];
+  } else {
+    // Recursive case: capitalize the first word of the array
+    // and concatenate it with the result of capitalizeWords
+    // for the remaining words in the array.
+    var capitalizedWord = input[0].toUpperCase();
+    return [capitalizedWord].concat(capitalizeWords(input.slice(1)));
+  }
+
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function(array) {
+  if (array.length === 0) {
+    // Base case: when the array is empty, return an empty array.
+    return [];
+  } else {
+    // Recursive case: capitalize the first letter of the first string
+    // and concatenate it with the result of capitalizeFirst
+    // for the remaining strings in the array.
+    var capitalizedString = array[0].charAt(0).toUpperCase() + array[0].slice(1);
+    return [capitalizedString].concat(capitalizeFirst(array.slice(1)));
+  }
+
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -348,6 +382,7 @@ var flatten = function(arrays) {
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj) {
+
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
