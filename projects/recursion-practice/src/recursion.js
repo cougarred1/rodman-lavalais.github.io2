@@ -79,14 +79,19 @@ if (n === 0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 
-var range = function(x, y) {
-  if (Math.abs(x - y) <= 1) {
-    return [];
-  } else if (x < y) {
-    return [x + 1].concat(range(x + 1, y));
-  } else {
-    return [x - 1].concat(range(x - 1, y));
+var range = function(x, y, output=[]) {
+
+  if (y - x === 1 || x - y === 1) {
+    return output;
+  } else if ( x < y){
+    output.unshift(y-1)
+    return range(x, y-1, output);
+  } else if (x > y){
+    output.push(x-1)
+    return range(x - 1, y, output);
   }
+return output;
+
 };
 
 
@@ -99,15 +104,19 @@ var range = function(x, y) {
 var exponent = function(base, exp) {
 
   if (exp === 0) {
-    // Base case: when the exponent is 0, the result is always 1.
     return 1;
-  } else if (exp > 0) {
-    // Recursive case: multiply the base by the result of exponent(base, exp - 1).
+  } else if (exp >= 1) {
     return base * exponent(base, exp - 1);
-  } else {
-    // Recursive case: for negative exponents, compute the reciprocal and multiply by the result of exponent(base, -exp - 1).
+  } else if (exp < 0){
+
+    //use parenthesis, becase if not it would have went left to right, and we want PEMDAS first
     return 1 / (base * exponent(base, -exp - 1));
-  }
+  }               //4 times recursion call
+              //4 * exponent(4, 3 - 1)  = 4 * 16        4 * exponent(4, 3 - 1) exponent(4, 2 - 1) * exponent(4, 1 - 1)
+              //4 * exponent(4, 2 - 1)  = 4 * 4         
+              //4 * exponent(4, 1 - 1); = 4 * 1         
+              // return 1;
+
 };
 
 // 8. Determine if a number is a power of two.
@@ -116,16 +125,6 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
 
-  if (n === 1) {
-    // Base case: when n is 1, it is a power of two.
-    return true;
-  } else if (n < 1 || n % 2 !== 0) {
-    // Base case: when n is less than 1 or not divisible by 2, it is not a power of two.
-    return false;
-  } else {
-    // Recursive case: divide n by 2 and check if the result is a power of two.
-    return powerOfTwo(n / 2);
-  }  
 
 };
 
