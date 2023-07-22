@@ -124,21 +124,25 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-
+  if (n === 1) {
+    return true;
+  } else if (n < 1 || n % 2 !== 0) {
+    return false;
+  } else {
+    
+    return powerOfTwo(n / 2);
+  }  
 
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
-
-  if (string === "") {
-    // Base case: when the string is empty, return an empty string.
-    return "";
-  } else {
-    // Recursive case: recursively reverse the substring starting from the second character
-    // and concatenate it with the first character.
-    return reverse(string.substring(1)) + string.charAt(0);
+  if (string.length <= 1) {
+    return string;
   }
+  
+  // Recursive case: Take the last character of the string and concatenate it with the reverse of the rest of the string.
+  return string.charAt(string.length - 1) + reverse(string.slice(0, -1));
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -313,19 +317,26 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+var nthFibo = function(n, memo = []) {
+  if (n < 0) {
+    return null;
+  }
+
+  // Base cases: Return the first two Fibonacci numbers directly.
   if (n === 0) {
-    // Base case: when n is 0, return the first Fibonacci number, which is 0.
     return 0;
   } else if (n === 1) {
-    // Base case: when n is 1, return the second Fibonacci number, which is 1.
     return 1;
-  } else {
-    // Recursive case: return the sum of the (n-1)th Fibonacci number
-    // and the (n-2)th Fibonacci number.
-    return nthFibo(n - 1) + nthFibo(n - 2);
   }
-  
+
+  // Check if the value is already memoized to avoid redundant calculations.
+  if (memo[n]) {
+    return memo[n];
+  }
+
+  // Recursive case: Calculate the nth Fibonacci number and store it in the memo object.
+  memo[n] = nthFibo(n - 1, memo) + nthFibo(n - 2, memo);
+  return memo[n];
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
@@ -390,6 +401,17 @@ var letterTally = function(str, obj) {
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list) {
+  if (list.length <= 1) {
+    return list;
+  }
+
+  
+  if (list[0] === list[1]) {
+    return compress(list.slice(1));
+  }
+
+  // If the first two elements are different, keep the first element and call compress recursively on the rest of the list.
+  return [list[0]].concat(compress(list.slice(1)));
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -402,6 +424,19 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  if (array.length <= 1) {
+    return array;
+  }
+
+  // Check if the first two elements are both zeroes.
+  // If they are, remove the first element and call minimizeZeroes recursively on the modified array.
+  if (array[0] === 0 && array[1] === 0) {
+    return minimizeZeroes(array.slice(1));
+  }
+
+  // If the first two elements are not both zeroes, keep the first element and call minimizeZeroes recursively on the rest of the array.
+  return [array[0]].concat(minimizeZeroes(array.slice(1)));
+
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
@@ -409,6 +444,8 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+
+  
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
