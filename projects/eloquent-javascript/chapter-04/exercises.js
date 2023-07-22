@@ -106,7 +106,19 @@ function nth(list, n) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function deepEqual(value1, value2) {
-
+  if (value1 === value2) return true;
+  if (typeof value1 !== 'object' || value1 === null || value2 === null) return false;
+  
+  if (Array.isArray(value1) && Array.isArray(value2)) {
+    return value1.length === value2.length && value1.every((v, i) => deepEqual(v, value2[i]));
+  }
+  
+  const keys1 = Object.keys(value1);
+  const keys2 = Object.keys(value2);
+  
+  if (keys1.length !== keys2.length) return false;
+  
+  return keys1.every(key => deepEqual(value1[key], value2[key]));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
