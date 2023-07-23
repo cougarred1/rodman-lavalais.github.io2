@@ -391,8 +391,21 @@ var flatten = function(arrays) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
 
+
+var letterTally = function(str, obj={}) {
+//base
+if (str.length === 0){
+
+return obj;
+//recursion
+} if (obj[str[0]]){
+obj[str[0]] += 1;
+} else {
+  obj[str[0]] = 1; 
+}
+
+return letterTally(str.slice(1), obj);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -443,15 +456,69 @@ var minimizeZeroes = function(array) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, newArr=[]) {
 
-  
+  //base
+  if(array.length === 0){
+
+    return newArr;
+  } 
+  //recursion
+if (newArr.length === 0 && array[0] < 0){
+  newArr.push(array[0] * -1);
+} else if (newArr.length === 0 && array[0] >= 0){
+newArr.push(array[0]);
+} else if (newArr[newArr.length - 1] < 0 && array[0] < 0){
+  newArr.push(array[0] * -1);
+} else if (newArr[newArr.length - 1] < 0 && array[0] >= 0){
+newArr.push(array[0]);
+} else if (newArr[newArr.length - 1] >= 0 && array[0] < 0){
+  newArr.push(array[0]);
+} else if (newArr[newArr.length - 1] >= 0 && array[0] >= 0){
+  newArr.push(array[0] * -1);
+}
+
+
+return alternateSign(array.slice(1), newArr);
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, newStr=[]) {
+//base
+
+str.split(" ");
+
+  if(str.length === 0){
+
+    return newStr.join("");
+  } 
+  //recursion
+  if(str[0] === "0"){
+newStr.push("zero");
+  } else if (str[0] === "1"){
+newStr.push("one");
+  } else if (str[0] === "2"){
+    newStr.push("two");
+ } else if (str[0] === "3"){
+  newStr.push("three");
+ } else if (str[0] === "4"){
+  newStr.push("four");
+ } else if (str[0] === "5"){
+  newStr.push("five");
+ } else if (str[0] === "6"){
+  newStr.push("six");
+ } else if (str[0] === "7"){
+  newStr.push("seven");
+ } else if (str[0] === "8"){
+  newStr.push("eight");
+ } else if (str[0] === "9"){
+  newStr.push("nine");
+ } else {
+  newStr.push(str[0])
+ }
+return numToText(str.slice(1), newStr);
 };
 
 // *** EXTRA CREDIT ***

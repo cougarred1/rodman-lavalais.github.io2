@@ -138,7 +138,10 @@ var friendFirstLetterCount = function(array, name, letter) {
     return 0;
 };
 
-var friendsCount;
+var friendsCount = function(customerName){
+    const customer = customers.find((c) => c.name === customerName);
+    return customer ? customer.friends : [];
+};
 
 var topThreeTags;
 
