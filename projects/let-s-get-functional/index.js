@@ -158,7 +158,13 @@ return accumulator;
 return output;
 };
 
-var topThreeTags;
+var topThreeTags = function(array){
+
+    for (let i = 0; i < array.length; i++){
+            
+    }
+    return;
+};
 
 var genderCount;
 
