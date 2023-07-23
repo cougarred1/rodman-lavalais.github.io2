@@ -28,7 +28,7 @@ const myString = "Hello, Guys!";
 const length = myString.length;
 
 //toLowerCase & toUpperCase()
-const myString = "Hello, Nerds!";
-const lowercase = myString.toLowerCase(); 
+const myStrings = "Hello, Nerds!";
+const lowercase = myStrings.toLowerCase(); 
 
-const uppercase = myString.toUpperCase();
+const uppercase = myStrings.toUpperCase();
