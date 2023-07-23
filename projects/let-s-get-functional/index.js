@@ -159,11 +159,12 @@ return output;
 };
 
 var topThreeTags = function(array){
+let newArray = array.reduce(function(accumulator, current)){
+    return accumulator.concat(current.tags);
 
-    for (let i = 0; i < array.length; i++){
-            
+   
     }
-    return;
+
 };
 
 var genderCount;

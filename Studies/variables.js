@@ -5,7 +5,7 @@
  identifiers that can store or implement data like numbers, strings, boolean, arrays, objects, etc. Variables
  can be changed later on depended on how they're declared.
  * 
- * 1: Declarationa and assignment: To create a variable in javascript we must create it using one of three decorative keywords
+ * 1: Declaration and assignment: To create a variable in javascript we must create it using one of three decorative keywords
  var, let, or const. Followed by the name of our variable.
  * 
  * 2. There are 2 steps to creating a variable: Declaring and assigning.
