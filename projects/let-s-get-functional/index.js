@@ -138,9 +138,24 @@ var friendFirstLetterCount = function(array, name, letter) {
     return 0;
 };
 
-var friendsCount = function(customerName){
-    const customer = customers.find((c) => c.name === customerName);
-    return customer ? customer.friends : [];
+var friendsCount = function(array, name){
+
+    let output = array.reduce(function(accumulator, current){
+        
+        for (let i = 0; i < current.friends.length; i++){
+
+            if (current.friends[i].name === name){
+                accumulator.push(current.name);
+            }
+
+        }
+return accumulator;
+
+    }, []);
+
+
+
+return output;
 };
 
 var topThreeTags;
