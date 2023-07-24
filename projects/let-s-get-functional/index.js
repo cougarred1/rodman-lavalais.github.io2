@@ -158,16 +158,63 @@ return accumulator;
 return output;
 };
 
-var topThreeTags = function(array){
-let newArray = array.reduce(function(accumulator, current)){
-    return accumulator.concat(current.tags);
+var topThreeTags = function(customers) {
+    let counter = {};
+  let final = [];
+  
+let acc = customers.reduce(function(accumulator, current){
+ for (var i = 0; i < current.tags.length; i++){
+   accumulator.push(current.tags[i]);
+ } 
+ let counter = {};
+return accumulator;
+},[]);
+  
+   acc.forEach(function(each){
+   if (counter[each]){
+     counter[each] += 1;
+   } else {
+     counter[each] = 1;
+   }
+   return counter;
+ })
+  //return counter;
+for (var key in counter){
+  final.push([key, counter[key]])
+}
+  //return final;
+let ordered = final.sort(function(a, b){
+    return b[1] - a[1];
+  })
+let done = [ordered[0][0], ordered[1][0], ordered[2][0]];
+  return done;
+  };
 
-   
+
+var genderCount = function(array){
+    let sling = _.map(array, function(customer){
+        return customer.gender;
+    })
+    let total = sling;
+    let count = {};
+    let fem = [];
+    let mal = [];
+    let non = [];
+    for (var i = 0; i < total.length; i++){
+        if (total[i] === 'female') {
+            fem.push(total[i]);
+        } else if (total[i] === 'male') {
+            mal.push(total[i]);
+        } else {
+            non.push(total[i]);
+        }
+       
     }
-
+        count.female = fem.length;
+        count.male = mal.length;
+        count['non-binary'] = non.length;
+   return count;
 };
-
-var genderCount;
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
