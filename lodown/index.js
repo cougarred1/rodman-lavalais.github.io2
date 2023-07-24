@@ -444,3 +444,12 @@ module.exports.some = some;
  *  * @param {Object} object : Third object passed in 
  * @returns {Object}  : Returned updated object with all 3 assigned
  */
+
+    _.extend = function(obj1, obj2, obj3) {
+
+      return Object.assign(obj1, obj2, obj3);
+      
+      
+      }
+
+      
