@@ -108,8 +108,29 @@ return youngest.name;
 
 
 
+ /* ### 5: `averageBalance`
+  - **Objective**: Find the average balance of all customers
+  - **Input**: `Array`
+  - **Output**: `Number`
+  - **Constraints**:
+  */
 
-var averageBalance; //skip this one
+
+var averageBalance = function(array){
+
+    let total = _.map(array, function(customer){
+        return customer.balance;
+    }
+
+)
+const num = total.length;
+
+let added = 0;
+for (var i = 0; i < total.length; i++){
+added += parseFloat(total[i].replace(/[$,]/g, ''))
+}
+return added / num;    
+}
 
 
 /* 6: `firstLetterCount`
